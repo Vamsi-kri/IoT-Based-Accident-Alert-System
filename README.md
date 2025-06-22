@@ -1,34 +1,60 @@
-# IoT-Based-Accident-Alert-System
-With road safety being a critical global concern, this project aims to reduce emergency response times and minimize accident impact through automated alerting. The system detects sudden deceleration or rollover using the MPU6050 sensor, determines the exact location via GPS, and sends alerts using IFTTT automation.
+# IoT-Based Accident Alert System
 
-## 🧠 Future Enhancements
+A smart, IoT-enabled system that detects vehicular accidents in real-time using motion sensors and GPS modules, and sends immediate alerts to emergency contacts and services via the IFTTT platform. Built using NodeMCU (ESP8266), MPU6050 accelerometer/gyroscope, and Neo-6M GPS.
 
-- 🔍 ML-based accident prediction from historical data
-- 📡 GSM-based alert fallback for offline zones
-- 🛣️ Traffic hazard warning dashboard
-- 📲 Mobile app integration
+##  Overview
 
-## 🧠 Key Features
+Road safety is a critical global concern. This project aims to reduce emergency response times and minimize accident impact through automated alerting. The system detects sudden deceleration or rollover using the MPU6050 sensor, determines the exact location via GPS, and sends alerts to emergency contacts using IFTTT automation.
 
-- 🚗 Real-time **accident detection**
-- 📍 Accurate **location tracking**
-- ✉️ **Automated alerting** via email/SMS using IFTTT
-- 📶 **Wi-Fi connectivity** with NodeMCU
-- 💡 Scalable, low-cost, and easy to deploy
+##  System Architecture
 
-## ⚙️ Components Used
+[MPU6050 Sensor] 
+      │ (detects impact/rollover)
+      ▼
+[NodeMCU (ESP8266)]
+      │ (processes data & connects to Wi-Fi)
+      ▼
+[Neo-6M GPS Module]
+      │ (fetches live coordinates)
+      ▼
+[IFTTT Webhook]
+      │ (triggers SMS/Email alert)
+      ▼
+[Emergency Contacts]
 
-| Component     | Description                              |
-|---------------|------------------------------------------|
-| NodeMCU (ESP8266) | Wi-Fi microcontroller for processing |
-| MPU6050       | Accelerometer + Gyroscope sensor         |
-| Neo-6M GPS    | Gets accurate location data              |
-| LCD Display   | (Optional) Display status in-vehicle     |
-| IFTTT Service | Sends alerts to emergency contacts       |
+##  Components Used
 
-## 🧩 System Architecture
+| Component          | Description                                   |
+|--------------------|-----------------------------------------------|
+| NodeMCU (ESP8266)  | Wi-Fi microcontroller for processing          |
+| MPU6050            | Accelerometer + Gyroscope sensor              |
+| Neo-6M GPS         | Provides precise location data                |
+| LCD Display        | (Optional) Displays status in-vehicle         |
+| IFTTT Service      | Sends alerts to emergency contacts            |
 
-1. Monitor acceleration/orientation with **MPU6050**
-2. Fetch live location using **GPS**
-3. Send alerts using **Wi-Fi + IFTTT**
-4. Emergency contacts receive **email/SMS with Google Maps link**
+##  Key Features
+
+- Real-Time Accident Detection: Uses MPU6050 to sense sudden deceleration or rollover.
+- Accurate Location Tracking: Captures precise GPS coordinates.
+- Automated Emergency Alerts: Instantly notifies contacts via IFTTT (Email/SMS with a Google Maps link).
+- Wi-Fi Enabled: NodeMCU ensures seamless cloud connectivity.
+- Low Cost & Scalable: Designed with affordability and easy deployment in mind.
+- Modular: Optional LCD for in-vehicle display.
+
+##  Getting Started
+
+### Prerequisites
+
+- NodeMCU (ESP8266)
+- MPU6050 sensor
+- Neo-6M GPS module
+- IFTTT account
+- (Optional) LCD Display
+
+### Setup Instructions
+
+1. Connect the hardware components as per the circuit diagram.
+2. Flash the provided firmware/code to the NodeMCU.
+3. Configure your Wi-Fi credentials in the code.
+4. Set up IFTTT applets to trigger email/SMS alerts based on webhooks.
+5. Power the system and test by simulating an accident event.
