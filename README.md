@@ -11,15 +11,19 @@ Road safety is a critical global concern. This project aims to reduce emergency 
 [MPU6050 Sensor] 
       │ (detects impact/rollover)
       ▼
+      
 [NodeMCU (ESP8266)]
       │ (processes data & connects to Wi-Fi)
       ▼
+      
 [Neo-6M GPS Module]
       │ (fetches live coordinates)
       ▼
+      
 [IFTTT Webhook]
       │ (triggers SMS/Email alert)
       ▼
+      
 [Emergency Contacts]
 
 ##  Components Used
