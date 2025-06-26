@@ -111,3 +111,82 @@ Road safety is a critical global concern. This project aims to reduce emergency 
 - LCD must be powered by 5V (not 3.3V).
 - Use a potentiometer to adjust LCD contrast via Vo.
 - Use a 220Ω resistor to limit current to the LCD backlight (A pin).
+  
+---
+
+## 📧 Email Alert and IFTTT Integration
+
+**IFTTT (If This Then That)** is a free web-based automation service that connects different apps and devices using simple conditional logic called **"Applets."**
+
+In this project, IFTTT is used to **send an automated email alert to the vehicle owner with the GPS location** whenever a disturbance (accident, vibration, or tampering) is detected.
+
+---
+
+### ✅ What is IFTTT?
+
+* IFTTT allows you to **trigger actions (like sending emails)** when a specific event happens.
+* In our case:
+  **If ESP device detects a disturbance → Then send an Email with GPS Location**
+
+---
+
+### ✅ How IFTTT Works for This Project:
+
+The ESP module triggers IFTTT by making an **HTTP GET API call** like this:
+
+https://maker.ifttt.com/trigger/[Event_Name]/with/key/[Your_IFTTT_Key]?value1=[Latitude]&value2=[Longitude]
+
+* **Event Name** → Your custom event (example: `disturbance`)
+* **IFTTT Key** → Unique key from your IFTTT Webhooks account
+* **value1** and **value2** → Latitude and Longitude (from GPS)
+
+---
+
+### ✅ Steps to Create the IFTTT Applet:
+
+#### **Step 1: Get Your IFTTT Webhooks Key**
+
+1. Go to [https://ifttt.com/maker\_webhooks](https://ifttt.com/maker_webhooks)
+2. Click on **Documentation** (top-right)
+3. Copy your unique **Webhook Key**
+   Example Key:
+   p7zBBT6FHzN_7-6batwm3rg8v9T4gmrsjXSajuwaDJ1
+
+#### **Step 2: Create the Applet**
+
+1. Go to **[https://ifttt.com/create](https://ifttt.com/create)**
+
+2. Click **"+ This"**
+
+   * Choose **Webhooks**
+   * Select **"Receive a web request"**
+   * Enter your Event Name → Example: `disturbance`
+
+3. Click **"+ That"**
+
+   * Choose **Gmail** or **Email**
+   * Select **"Send me an email"**
+
+4. In the **email body**, you can insert the following Google Maps link to display location:
+
+https://www.google.com/maps/search/?api=1&query={{Value1}},{{Value2}}
+
+This will automatically convert the GPS coordinates into a clickable Google Maps location in your email.
+
+###  Step 3: Finalize and Activate
+
+* Review your applet setup.
+* Click **Finish**.
+* Your IFTTT applet is now ready.
+
+Whenever your ESP module sends a disturbance alert, IFTTT will send an email with a clickable GPS location.
+
+###  Example Email Triggered:
+
+Subject: Disturbance Detected!
+
+Body:
+A disturbance has been detected at the following location:
+
+https://www.google.com/maps/search/?api=1&query=17.385044,78.486671
+
