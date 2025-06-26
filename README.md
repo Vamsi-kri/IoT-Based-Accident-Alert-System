@@ -63,76 +63,40 @@ Road safety is a critical global concern. This project aims to reduce emergency 
 4. Set up IFTTT applets to trigger email/SMS alerts based on webhooks.
 5. Power the system and test by simulating an accident event.
 
-##MPU6050 and NodeMCU: The MPU uses I2C to communicate with the MPU6050. D1 and D2 pins are multiplexed with SCL and SDA respectively. MPU6050 is powered using 3.3V and Ground pins from the NodeMCU.
+1. MPU6050 (Accelerometer & Gyroscope) with NodeMCU
+NodeMCU Pin	MPU6050 Pin
+D1	SCL
+D2	SDA
+3.3V	Vcc
+G	Gnd
+Communication: I2C (D1 = SCL, D2 = SDA)
+Power: 3.3V and Ground from NodeMCU
+2. Neo-6M GPS Module with NodeMCU
+NodeMCU Pin	GPS Module Pin
+Tx	Rx
+Rx	Tx
+3.3V	Vcc
+Gnd	Gnd
+Communication: Serial (Tx↔Rx, Rx↔Tx)
+Power: 3.3V and Ground from NodeMCU
+3. 16x2 LCD with NodeMCU
+Power:
+Vdd → 5V (via DC adapter)
+Vss → Ground
+Vo → Center pin of potentiometer (10KΩ)
+Potentiometer sides → 5V and Ground
+Data/Control:
+LCD Pin	NodeMCU Pin	Notes
+RS	D0	Register Select
+E	D3	Enable
+D4	D4	Data
+D5	D5	Data
+D6	D6	Data
+D7	D7	Data
+A	5V (via 220Ω Res.)	Anode (Backlight)
+K	Ground	Cathode (Backlight)
+Special Notes:
 
-NodeMCU
-
-MPU6050
-
-D1
-
-SCL
-
-D2
-
-SDA
-
-3.3V
-
-Vcc
-
-G
-
-Gnd
-
- 
-
-Neo-6M GPS Module and NodeMCU: GPS Module uses asynchronous serial communication. The Tx of the NodeMCU is connected to the Rx pin of the module and the Rx pin is connected to the Tx pin of the module. The GPS module is powered using 3.3V and Ground pin of the NodeMCU.
-
-NodeMCU
-
-6M GPS Module
-
-Tx
-
-Rx
-
-Rx
-
-Tx
-
-3.3V
-
-Vcc
-
-Gnd
-
-Gnd
-
- 
-
-16x2 LCD Connection: Vdd and Vss are connected to the 5V DC adapter. Vo is connected from the potentiometer (10Kohm) output (center pin). The other two terminals of the pot are connected to 5V and Ground respectively. The remaining pins are to be connected as mentioned in the table below. A resistor of 220ohms is connected to limit the current consumption before connecting to the anode.
-
-LCD pins
-
-Vdd          -         5V
-
-Vss          -         Ground
-
-Vo            -          potentiometer output
-
-RS           -         D0 pin of NodeMCU
-
-E              -          D3 pin of NodeMCU
-
-D4            -          D4 pin of NodeMCU
-
-D5            -          D5 pin of NodeMCU
-
-D6            -          D6 pin of NodeMCU
-
-D7            -          D7 pin of NodeMCU
-
-A              -          5V with 220ohm connected serially
-
-K              -          Ground
+LCD is powered by 5V, not 3.3V.
+Use a potentiometer to adjust LCD contrast via Vo.
+Use a 220Ω resistor to limit current to the LCD backlight (A pin).
