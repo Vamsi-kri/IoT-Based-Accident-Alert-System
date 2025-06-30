@@ -151,3 +151,12 @@ Subject: Disturbance Detected!
 
 Body: A disturbance has been detected at the following location:
 Google Maps Location
+
+##  License:
+
+This project is open-source under the **MIT License**.  
+Feel free to **modify**, **improve**, and **use** it for **educational** and **personal projects**.
+
+---
+
+ **Happy Building!**
